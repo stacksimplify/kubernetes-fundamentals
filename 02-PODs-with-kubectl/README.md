@@ -21,7 +21,7 @@ kubectl run my-first-pod --image stacksimplify/kubenginx:1.0.0 --generator=run-p
   2. Pulled the docker image from docker hub
   3. Created the container in the pod
   4. Started the container present in the pod
-- **Important Note:** Without **--generator=run-pod/v1** it will create a pod with a deployment. 
+- **Important Note:** Without **--generator=run-pod/v1** it will create a pod with a deployment which is another core kubernetes concept which we will learn in next few minutes. 
 
 ### List Pods
 - Get the list of pods
