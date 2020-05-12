@@ -16,6 +16,7 @@ kubectl get nodes
 ```
 kubectl run my-first-pod --image stacksimplify/kubenginx:1.0.0 --generator=run-pod/v1
 ```
+- **Important Note:** Without **--generator=run-pod/v1** it will create a pod with a deployment. 
 
 ### List Pods
 - Get the list of pods
