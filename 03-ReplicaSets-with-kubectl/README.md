@@ -85,3 +85,8 @@ kubectl delete rs/my-first-nginx-rs
 kubectl get rs
 ```
 
+## Pending Concept in ReplicaSet
+- We didn't discuss about **Labels & Selectors**
+- This concept we can understand in detail when we are learning to write Kubernetes YAML manifest. 
+- So we will understand about this during the **ReplicaSets-YAML** section.
+
