@@ -1,6 +1,8 @@
 # Kubernetes - ReplicaSets
 
 ## Step-01: Introduction to ReplicaSets
+- What are ReplicaSets?
+- What is the advantage of using ReplicaSets?
 
 ## Step-02: ReplicaSets Demo
 
