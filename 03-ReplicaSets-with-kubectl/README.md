@@ -20,13 +20,17 @@ kubectl get rs
 ### Describe ReplicaSet
 - Describe the newly created ReplicaSet
 ```
+kubectl describe rs/<replicaset-name>
 kubectl describe rs/my-first-nginx-rs
 ```
 
 ### List of Pods
 - Get list of Pods
 ```
+#Get list of Pods
 kubectl get pods
+
+# Get list of Pods with Pod IP and Node in which it is running
 kubectl get pods -o wide
 ```
 
