@@ -11,6 +11,29 @@
 ```
 kubectl create -f replicaset-demo.yml
 ```
+- **replicaset-demo.yml**
+```yml
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: my-nginx-rs
+  labels:
+    app: my-nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-nginx
+  template:
+    metadata:
+      labels:
+        app: my-nginx
+    spec:
+      containers:
+      - name: my-first-nginx
+        image: stacksimplify/kubenginx:1.0.0
+```
+
 ### List ReplicaSets
 - Get list of ReplicaSets
 ```

@@ -1,21 +1,18 @@
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
-  name: my-first-nginx-rs
+  name: my-nginx-rs
   labels:
-    app: my-first-nginx
-    tier: frontend
+    app: my-nginx
 spec:
-  # modify replicas according to your case
   replicas: 3
   selector:
     matchLabels:
-      tier: frontend
+      app: my-nginx
   template:
     metadata:
       labels:
-        app: my-first-nginx
-        tier: frontend
+        app: my-nginx
     spec:
       containers:
       - name: my-first-nginx
