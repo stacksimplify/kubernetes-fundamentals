@@ -74,6 +74,7 @@ kubectl get pods my-first-nginx-rs-449xd -o yaml
 - Expose ReplicaSet with a service (NodePort Service) to access the application externally (from internet)
 ```
 # Expose ReplicaSet as a Service
+kubectl expose rs <ReplicaSet-Name>  --type=NodePort --port=80 --target-port=8080 --name=<Service-Name-To-Be-Created>
 kubectl expose rs my-helloworld-rs  --type=NodePort --port=80 --target-port=8080 --name=my-helloworld-rs-service
 
 # Get Service Info
