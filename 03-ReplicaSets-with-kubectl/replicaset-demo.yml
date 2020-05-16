@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
-  name: my-nginx-rs
+  name: my-helloworld-rs
   labels:
-    app: my-nginx
+    app: my-helloworld
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: my-nginx
+      app: my-helloworld
   template:
     metadata:
       labels:
-        app: my-nginx
+        app: my-helloworld
     spec:
       containers:
-      - name: my-first-nginx
-        image: stacksimplify/kubenginx:1.0.0
+      - name: my-helloworld-app
+        image: stacksimplify/kube-helloworld:1.0.0

@@ -23,7 +23,7 @@ kubectl run my-first-pod --image stacksimplify/kubenginx:1.0.0 --generator=run-p
   4. Started the container present in the pod
 - **Important Note:** Without **--generator=run-pod/v1** it will create a pod with a deployment which is another core kubernetes concept which we will learn in next few minutes. 
 - **Important Note:**
-  - With Kubernetes 1.18 version, there is lot clean-up to **kubectl run** command.
+  - With **Kubernetes 1.18 version**, there is lot clean-up to **kubectl run** command.
   - The below will suffice to create a Pod as a pod without creating deployment. We dont need to add **--generator=run-pod/v1**
 ```
 kubectl run my-first-pod --image stacksimplify/kubenginx:1.0.0
@@ -75,6 +75,7 @@ kubectl delete pod my-first-pod
 
 
 ## Step-03: Expose Pod with a Service
+- Expose pod with a service (NodePort Service) to access the application externally (from internet)
 - **Ports**
   - **port:** Port on which node port service listens in Kubernetes cluster internally
   - **targetPort:** We define container port here on which our application is running.
@@ -85,16 +86,38 @@ kubectl run my-first-pod --image stacksimplify/kubenginx:1.0.0 --generator=run-p
 
 # Expose Pod as a Service
 kubectl expose pod my-first-pod  --type=NodePort --port=80 --name=my-first-service
+
+# Get Service Info
+kubectl get service
+kubectl get svc
+
+# Get Public IP of Worker Nodes
+kubectl get nodes -o wide
 ```
+- **Access the Application using Public IP**
+```
+http://<node1-public-ip>:<Node-Port>
+```
+
 - **target-port**
 
 ```
+# Below command will fail when accessing the application, as service port (81) and container port (80) are different
 kubectl expose pod my-first-pod  --type=NodePort --port=81 --name=my-first-service2     
-
-# Above command will fail when accessing the application, as service port (81) and container port (80) are different
 
 # Expose Pod as a Service with Container Port (--taret-port)
 kubectl expose pod my-first-pod  --type=NodePort --port=81 --target-port=80 --name=my-first-service2
+
+# Get Service Info
+kubectl get service
+kubectl get svc
+
+# Get Public IP of Worker Nodes
+kubectl get nodes -o wide
+```
+- **Access the Application using Public IP**
+```
+http://<node1-public-ip>:<Node-Port>
 ```
 
 ## Step-04: Interact with a Pod
