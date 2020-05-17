@@ -67,15 +67,15 @@ http://<node1-public-ip>:<Node-Port>
 #### Update the Application verion from 1.0.0 to 2.0.0 using "Set Image" Option
 ```
 # Update Deployment -- SHOULD FAIL DUE TO WRONG CONTAINER NAME
-kubectl set image deployment/my-first-deployment abcdefg=stacksimplify/kubenginx:2.0.0 --record
+kubectl set image deployment/my-first-deployment abcdefg=stacksimplify/kubenginx:2.0.0 --record=true
 
 # Get Container Name from current deployment
 kubectl get deployment my-first-deployment -o yaml
 Observation: Please Check the container name in spec.container.name and make a note of it and replace in below command <Container-Name>
 
 # Update Deployment - SHOULD WORK NOW
-kubectl set image deployment/<Deployment-Name> <Container-Name>=<Container-Image> --record
-kubectl set image deployment/my-first-deployment kubenginx=stacksimplify/kubenginx:2.0.0 --record
+kubectl set image deployment/<Deployment-Name> <Container-Name>=<Container-Image> --record=true
+kubectl set image deployment/my-first-deployment kubenginx=stacksimplify/kubenginx:2.0.0 --record=true
 
 # Verify Rollout Status 
 kubectl rollout status deployment/my-first-deployment
@@ -95,12 +95,18 @@ Observation: New ReplicaSet will be created for new version
 # Verify Pods
 kubectl get po
 Observation: Pod template hash label of new replicaset should be present for PODs letting us know these pods belong to new ReplicaSet.
+
+# Check the Rollout History of a Deployment
+kubectl rollout history deployment/<Deployment-Name>
+kubectl rollout history deployment/my-first-deployment  
+Observation: We have the rollout history, so we can switch back to older revisions using revision history available to us.  
 ```
+
 ### Update the Application from 2.0.0 to 3.0.0 using "Edit Deployment" Option
 ```
 # Edit Deployment
-kubectl edit deployment/<Deployment-Name>
-kubectl edit deployment/my-first-deployment
+kubectl edit deployment/<Deployment-Name> --record=true
+kubectl edit deployment/my-first-deployment --record=true
 
 # Verify Rollout Status 
 kubectl rollout status deployment/my-first-deployment
@@ -110,11 +116,16 @@ Observation: Rollout happens in a rolling update model, so no downtime.
 kubectl get rs
 kubectl get po
 Observation:  We should see 3 ReplicaSets now, as we have updated our application to 3rd version 3.0.0
+
+# Check the Rollout History of a Deployment
+kubectl rollout history deployment/<Deployment-Name>
+kubectl rollout history deployment/my-first-deployment   
 ```
 
 ## Step-06: Rollback a Deployment
-### Verify Rollout History
+
 ```
+# Check the Rollout History of a Deployment
 kubectl rollout history deployment/<Deployment-Name>
-kubectl rollout history deployment/my-first-deployment   
+kubectl rollout history deployment/my-first-deployment  
 ```
