@@ -65,7 +65,7 @@ http://<node1-public-ip>:<Node-Port>
 ```
 
 ## Step-05: Updating a Deployment
-#### Update the Application verion from 1.0.0 to 2.0.0 using "Set Image" Option
+#### Update the Application verion from V1 to V2 using "Set Image" Option
 ```
 # Update Deployment -- SHOULD FAIL DUE TO WRONG CONTAINER NAME
 kubectl set image deployment/my-first-deployment abcdefg=stacksimplify/kubenginx:2.0.0 --record=true
@@ -103,7 +103,7 @@ kubectl rollout history deployment/my-first-deployment
 Observation: We have the rollout history, so we can switch back to older revisions using revision history available to us.  
 ```
 
-### Update the Application from 2.0.0 to 3.0.0 using "Edit Deployment" Option
+### Update the Application from V2 to V3 using "Edit Deployment" Option
 ```
 # Edit Deployment
 kubectl edit deployment/<Deployment-Name> --record=true
@@ -180,6 +180,7 @@ kubectl get po
 ## Step-08: Pausing & Resuming Deployments
 - Why do we need Pausing & Resuming Deployments?
   - If we want to make multiple changes to our Deployment, we can pause the deployment make all changes and resume it. 
+- We are going to update our Application Version from **V3 to V4** as part of learning "Pause and Resume Deployments"   
 ```
 # Check the Rollout History of a Deployment
 kubectl rollout history deployment/my-first-deployment  
