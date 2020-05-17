@@ -27,7 +27,8 @@ kubectl get po
 - Scale the deployment to increase the number of replicas (pods)
 ```
 # Scale Up the Deployment
-kubectl scale deployment my-first-deployment --replicas=20
+kubectl scale --replicas=20 deployment/<Deployment-Name>
+kubectl scale --replicas=20 deployment/my-first-deployment 
 
 # Verify Deployment
 kubectl get deploy
@@ -39,7 +40,7 @@ kubectl get rs
 kubectl get po
 
 # Scale Down the Deployment
-kubectl scale deployment my-first-deployment --replicas=10
+kubectl scale --replicas=10 deployment/my-first-deployment 
 kubectl get deploy
 ```
 
@@ -124,8 +125,104 @@ kubectl rollout history deployment/my-first-deployment
 
 ## Step-06: Rollback a Deployment
 
+### Rollback to Previous Version
 ```
 # Check the Rollout History of a Deployment
 kubectl rollout history deployment/<Deployment-Name>
 kubectl rollout history deployment/my-first-deployment  
+
+# Verify changes in each revision
+kubectl rollout history deployment/my-first-deployment --revision=1
+kubectl rollout history deployment/my-first-deployment --revision=2
+kubectl rollout history deployment/my-first-deployment --revision=3
+Observation: Review the "Annotations" and "Image" tags for clear understanding about changes.
+
+# Rollback to previous version
+kubectl rollout undo deployment/my-first-deployment
+kubectl rollout history deployment/my-first-deployment  
+Observation: If we rollback, it will go back to revision-2 and its number increases to revision-4
+
+# Access the Application and Test if we are "Application Version: V2"
+http://<node1-public-ip>:<Node-Port>
+
+# Verify Deployment, Pods, ReplicaSets
+kubectl get deploy
+kubectl get rs
+kubectl get po
+kubectl describe deploy my-first-deployment
+```
+#### Rollback to specific revision
+```
+# Check the Rollout History of a Deployment
+kubectl rollout history deployment/<Deployment-Name>
+kubectl rollout history deployment/my-first-deployment 
+
+# Rollback to specific revision
+kubectl rollout undo deployment/my-first-deployment --to-revision=3
+kubectl rollout history deployment/my-first-deployment  
+Observation: If we rollback to revision 3, it will go back to revision-3 and its number increases to revision-5
+
+# Access the Application and Test if we are "Application Version: V3"
+http://<node1-public-ip>:<Node-Port>
+```
+
+## Step-07: Rolling Restarts of Application
+- Rolling restarts will kill the existing pods and recreate new pods. 
+```
+# Rolling Restarts
+kubectl rollout restart deployment/<Deployment-Name>
+kubectl rollout restart deployment/my-first-deployment
+
+# Get list of Pods
+kubectl get po
+```
+
+## Step-08: Pausing & Resuming Deployments
+- Why do we need Pausing & Resuming Deployments?
+  - If we want to make multiple changes to our Deployment, we can pause the deployment make all changes and resume it. 
+```
+# Check the Rollout History of a Deployment
+kubectl rollout history deployment/my-first-deployment  
+Observation: Make a note of last version number
+
+# Get list of ReplicaSets
+kubectl get rs
+Observation: Make a note of number of replicaSets present.
+
+# Access the Application 
+http://<node1-public-ip>:<Node-Port>
+Observation: Make a note of application version
+
+# Pause the Deployment
+kubectl rollout pause deployment/<Deployment-Name>
+kubectl rollout pause deployment/my-first-deployment
+
+# Update Deployment - Application Version from V3 to V4
+kubectl set image deployment/my-first-deployment kubenginx=stacksimplify/kubenginx:4.0.0 --record=true
+
+# Check the Rollout History of a Deployment
+kubectl rollout history deployment/my-first-deployment  
+Observation: No new rollout should start, we should see same number of versions as we check earlier with last version number matches which we have noted earlier.
+
+# Get list of ReplicaSets
+kubectl get rs
+Observation: No new replicaSet created. We should have same number of replicaSets as earlier when we took note. 
+
+# Make one more change: set limits to our container
+kubectl set resources deployment/my-first-deployment -c=kubenginx --limits=cpu=200m,memory=512Mi
+
+# Resume the Deployment
+kubectl rollout resume deployment/my-first-deployment
+
+# Check the Rollout History of a Deployment
+kubectl rollout history deployment/my-first-deployment  
+Observation: You should see a new version got created
+
+# Get list of ReplicaSets
+kubectl get rs
+Observation: You should see new ReplicaSet.
+
+# Access the Application 
+http://<node1-public-ip>:<Node-Port>
+Observation: You should see Application V4 version
 ```
