@@ -25,6 +25,9 @@ Observation: We don't need to specify "--type=ClusterIp" because default setting
 ```
 - **Important Note:** If backend application port (Container Port: 8080) and Service Port (8080) are same we don't need to use **--target-port=8080** but for avoiding the confusion i have added it. Same case applies to frontend application and service. 
 
+- **Backend HelloWorld Application Source** [kube-helloworld](../00-Docker-Images/02-kube-backend-helloworld-springboot/kube-helloworld)
+
+
 ## Step-03: NodePort Service - Frontend Application Setup
 - We have implemented **NodePort Service** multiple times so far (in pods, replicasets and deployments), even then we are going to implement one more time to get a full architectural view in relation with ClusterIp service. 
 - Create a deployment for Frontend Application (Nginx acting as Reverse Proxy)
@@ -50,6 +53,7 @@ kubectl scale --replicas=10 deployment/my-backend-rest-app
 # Test again to view the backend service Load Balancing
 http://<node1-public-ip>:<Node-Port>/hello
 ```
+- **Frontend Nginx Reverse Proxy Application Source** [kube-helloworld](../00-Docker-Images/003-kube-frontend-nginx/V1-Release)
 
 ## Pending Topics
 - We will look in tho these items when we progress in to course on that respective cloud provider
