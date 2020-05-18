@@ -100,6 +100,7 @@ http://<node1-public-ip>:<Node-Port>
 ```
 
 - **target-port**
+  -  If target-port is not defined, by default and for convenience, the targetPort is set to the same value as the port field.
 
 ```
 # Below command will fail when accessing the application, as service port (81) and container port (80) are different

@@ -1,4 +1,6 @@
 
+# References
+- KubeTips: https://akomljen.com/kubernetes-tips-part-1/
 
 ```
 Examples:
