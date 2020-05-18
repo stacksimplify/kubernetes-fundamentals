@@ -53,7 +53,7 @@ kubectl scale --replicas=10 deployment/my-backend-rest-app
 # Test again to view the backend service Load Balancing
 http://<node1-public-ip>:<Node-Port>/hello
 ```
-- **Frontend Nginx Reverse Proxy Application Source** [kube-helloworld](../00-Docker-Images/003-kube-frontend-nginx/V1-Release)
+- **Frontend Nginx Reverse Proxy Application Source** [kube-frontend-nginx](../00-Docker-Images/003-kube-frontend-nginx/V1-Release)
 
 ## Pending Topics
 - We will look in tho these items when we progress in to course on that respective cloud provider
