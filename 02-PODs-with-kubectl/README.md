@@ -68,8 +68,12 @@ kubectl get pods
 kubectl delete pod my-first-pod
 ```
 
+## Step-03: NodePort Service Introduction
+- What are Services in k8s?
+- What is a NodePort Service?
+- How it works?
 
-## Step-03: Expose Pod with a Service
+## Step-04: Demo - Expose Pod with a Service
 - Expose pod with a service (NodePort Service) to access the application externally (from internet)
 - **Ports**
   - **port:** Port on which node port service listens in Kubernetes cluster internally
@@ -94,8 +98,8 @@ kubectl get nodes -o wide
 http://<node1-public-ip>:<Node-Port>
 ```
 
-- **target-port**
-  -  If target-port is not defined, by default and for convenience, the targetPort is set to the same value as the port field.
+- **Important Note about: target-port**
+  -  If target-port is not defined, by default and for convenience, the **targetPort** is set to the same value as the **port** field.
 
 ```
 # Below command will fail when accessing the application, as service port (81) and container port (80) are different
@@ -116,7 +120,7 @@ kubectl get nodes -o wide
 http://<node1-public-ip>:<Node-Port>
 ```
 
-## Step-04: Interact with a Pod
+## Step-05: Interact with a Pod
 
 ### Verify Pod Logs
 ```
@@ -159,7 +163,7 @@ kubectl exec -it my-first-pod env
 kubectl exec -it my-first-pod ls
 kubectl exec -it my-first-pod cat /usr/share/nginx/html/index.html
 ```
-## Step-05: Get YAML Output of Pod & Service
+## Step-06: Get YAML Output of Pod & Service
 ### Get YAML Output
 ```
 # Get pod definition YAML output
