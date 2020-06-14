@@ -55,13 +55,8 @@ kubectl describe pod my-first-pod
 
 ### Access Application
 - Currently we can access this application only inside worker nodes. 
-- To access it externally, we need to learn important concept **Services**. 
-- We will access the application and test when we reach the **Services** section.
-- For now we have learned about the below. 
-  - Creating a Pod
-  - Getting List of Pods
-  - Describe the Pod
-  - Deleting the Pod.
+- To access it externally, we need to create a **NodePort Service**. 
+- **Services** is one very very important concept in Kubernetes. 
 
 
 ### Delete Pod
