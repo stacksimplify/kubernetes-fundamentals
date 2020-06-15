@@ -39,7 +39,7 @@ kubectl get rs
 Observation: No new replicaSet created. We should have same number of replicaSets as earlier when we took note. 
 
 # Make one more change: set limits to our container
-kubectl set resources deployment/my-first-deployment -c=kubenginx --limits=cpu=200m,memory=512Mi
+kubectl set resources deployment/my-first-deployment -c=kubenginx --limits=cpu=20m,memory=30Mi
 ```
 ### Resume Deployment 
 ```
