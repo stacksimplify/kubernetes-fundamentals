@@ -6,6 +6,7 @@
 - We are going to update our Application Version from **V3 to V4** as part of learning "Pause and Resume Deployments"  
 
 ## Step-01: Pausing & Resuming Deployments
+### Check current State of Deployment & Application
  ```
 # Check the Rollout History of a Deployment
 kubectl rollout history deployment/my-first-deployment  
@@ -16,9 +17,12 @@ kubectl get rs
 Observation: Make a note of number of replicaSets present.
 
 # Access the Application 
-http://<node1-public-ip>:<Node-Port>
+http://<worker-node-ip>:<Node-Port>
 Observation: Make a note of application version
+```
 
+### Pause Deployment and Two Changes
+```
 # Pause the Deployment
 kubectl rollout pause deployment/<Deployment-Name>
 kubectl rollout pause deployment/my-first-deployment
@@ -36,7 +40,9 @@ Observation: No new replicaSet created. We should have same number of replicaSet
 
 # Make one more change: set limits to our container
 kubectl set resources deployment/my-first-deployment -c=kubenginx --limits=cpu=200m,memory=512Mi
-
+```
+### Resume Deployment 
+```
 # Resume the Deployment
 kubectl rollout resume deployment/my-first-deployment
 
@@ -47,8 +53,23 @@ Observation: You should see a new version got created
 # Get list of ReplicaSets
 kubectl get rs
 Observation: You should see new ReplicaSet.
-
+```
+### Access Application
+```
 # Access the Application 
 http://<node1-public-ip>:<Node-Port>
 Observation: You should see Application V4 version
+```
+
+
+## Step-02: Clean-Up
+```
+# Delete Deployment
+kubectl delete deployment my-first-deployment
+
+# Delete Service
+kubectl delete svc my-first-deployment-service
+
+# Get all Objects from Kubernetes default namespace
+kubectl get all
 ```
