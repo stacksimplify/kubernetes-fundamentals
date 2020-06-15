@@ -67,7 +67,7 @@ kubectl get pods -o wide
 - Verify under **"name"** tag under **"ownerReferences"**. We will find the replicaset name to which this pod belongs to. 
 ```
 kubectl get pods <pod-name> -o yaml
-kubectl get pods my-first-nginx-rs-449xd -o yaml 
+kubectl get pods my-helloworld-rs-c8rrj -o yaml 
 ```
 
 ## Step-03: Expose ReplicaSet as a Service
