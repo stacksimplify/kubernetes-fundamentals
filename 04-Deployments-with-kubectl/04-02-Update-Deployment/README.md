@@ -6,38 +6,51 @@
   - Edit Deployment
 
 ## Step-01: Updating Application version V1 to V2 using "Set Image" Option
+### Update Deployment
+- **Observation:** Please Check the container name in `spec.container.name` yaml output and make a note of it and 
+replace in `kubectl set image` command <Container-Name>
 ```
 # Get Container Name from current deployment
 kubectl get deployment my-first-deployment -o yaml
-Observation: Please Check the container name in spec.container.name and make a note of it and 
-replace in below command <Container-Name>
 
 # Update Deployment - SHOULD WORK NOW
 kubectl set image deployment/<Deployment-Name> <Container-Name>=<Container-Image> --record=true
 kubectl set image deployment/my-first-deployment kubenginx=stacksimplify/kubenginx:2.0.0 --record=true
-
+```
+### Verify Rollout Status (Deployment Status)
+```
 # Verify Rollout Status 
 kubectl rollout status deployment/my-first-deployment
 Observation: By default, rollout happens in a rolling update model, so no downtime.
 
 # Verify Deployment
 kubectl get deploy
-
+```
+### Describe Deployment
+- **Observation:**
+  - Verify the Events and understand that Kubernetes by default do  "Rolling Update"  for new application releases. 
+  - With that said, we will not have downtime for our application.
+```
 # Descibe Deployment
 kubectl describe deployment my-first-deployment
-Observation: Verify the Events and understand that Kubernetes by default do  "Rolling Update" 
-for new application releases. 
-With that said, we will not have downtime for our application.
-
+```
+### Verify ReplicaSet
+- **Observation:** New ReplicaSet will be created for new version
+```
 # Verify ReplicaSet
 kubectl get rs
-Observation: New ReplicaSet will be created for new version
+```
 
-# Verify Pods
-kubectl get po
-Observation: Pod template hash label of new replicaset should be present for PODs letting us 
+### Verify Pods
+- **Observation:** Pod template hash label of new replicaset should be present for PODs letting us 
 know these pods belong to new ReplicaSet.
+```
+# List Pods
+kubectl get po
+```
 
+### Verify Rollout History of a Deployment
+```
 # Check the Rollout History of a Deployment
 kubectl rollout history deployment/<Deployment-Name>
 kubectl rollout history deployment/my-first-deployment  
@@ -45,22 +58,60 @@ Observation: We have the rollout history, so we can switch back to older revisio
 revision history available to us.  
 ```
 
+### Access the Application using Public IP
+- We should see `Application Version:V2` whenever we access the application in browser
+```
+# Get NodePort
+kubectl get svc
+Observation: Make a note of port which starts with 3 (Example: 80:3xxxx/TCP). Capture the port 3xxxx and use it in application URL below. 
+
+# Get Public IP of Worker Nodes
+kubectl get nodes -o wide
+Observation: Make a note of "EXTERNAL-IP" if your Kubernetes cluster is setup on AWS EKS.
+
+# Application URL
+http://<worker-node-public-ip>:<Node-Port>
+```
+
+
 ## Step-02: Update the Application from V2 to V3 using "Edit Deployment" Option
+### Edit Deployment
 ```
 # Edit Deployment
 kubectl edit deployment/<Deployment-Name> --record=true
 kubectl edit deployment/my-first-deployment --record=true
-
+```
+### Verify Rollout Status
+- **Observation:** Rollout happens in a rolling update model, so no downtime.
+```
 # Verify Rollout Status 
 kubectl rollout status deployment/my-first-deployment
-Observation: Rollout happens in a rolling update model, so no downtime.
-
+```
+### Verify Replicasets
+- **Observation:**  We should see 3 ReplicaSets now, as we have updated our application to 3rd version 3.0.0
+```
 # Verify ReplicaSet and Pods
 kubectl get rs
 kubectl get po
-Observation:  We should see 3 ReplicaSets now, as we have updated our application to 3rd version 3.0.0
-
+```
+### Verify Rollout History
+```
 # Check the Rollout History of a Deployment
 kubectl rollout history deployment/<Deployment-Name>
 kubectl rollout history deployment/my-first-deployment   
+```
+
+### Access the Application using Public IP
+- We should see `Application Version:V3` whenever we access the application in browser
+```
+# Get NodePort
+kubectl get svc
+Observation: Make a note of port which starts with 3 (Example: 80:3xxxx/TCP). Capture the port 3xxxx and use it in application URL below. 
+
+# Get Public IP of Worker Nodes
+kubectl get nodes -o wide
+Observation: Make a note of "EXTERNAL-IP" if your Kubernetes cluster is setup on AWS EKS.
+
+# Application URL
+http://<worker-node-public-ip>:<Node-Port>
 ```
