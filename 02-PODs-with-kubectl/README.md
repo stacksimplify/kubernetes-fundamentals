@@ -123,7 +123,7 @@ http://<node1-public-ip>:<Node-Port>
 kubectl expose pod my-first-pod  --type=NodePort --port=81 --name=my-first-service2     
 
 # Expose Pod as a Service with Container Port (--taret-port)
-kubectl expose pod my-first-pod  --type=NodePort --port=81 --target-port=80 --name=my-first-service2
+kubectl expose pod my-first-pod  --type=NodePort --port=81 --target-port=80 --name=my-first-service3
 
 # Get Service Info
 kubectl get service
