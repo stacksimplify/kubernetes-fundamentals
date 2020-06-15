@@ -18,10 +18,10 @@ kubectl set image deployment/<Deployment-Name> <Container-Name>=<Container-Image
 kubectl set image deployment/my-first-deployment kubenginx=stacksimplify/kubenginx:2.0.0 --record=true
 ```
 ### Verify Rollout Status (Deployment Status)
+- **Observation:** By default, rollout happens in a rolling update model, so no downtime.
 ```
 # Verify Rollout Status 
 kubectl rollout status deployment/my-first-deployment
-Observation: By default, rollout happens in a rolling update model, so no downtime.
 
 # Verify Deployment
 kubectl get deploy
@@ -50,12 +50,13 @@ kubectl get po
 ```
 
 ### Verify Rollout History of a Deployment
+- **Observation:** We have the rollout history, so we can switch back to older revisions using 
+revision history available to us.  
+
 ```
 # Check the Rollout History of a Deployment
 kubectl rollout history deployment/<Deployment-Name>
 kubectl rollout history deployment/my-first-deployment  
-Observation: We have the rollout history, so we can switch back to older revisions using 
-revision history available to us.  
 ```
 
 ### Access the Application using Public IP
