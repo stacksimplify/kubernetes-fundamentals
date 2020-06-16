@@ -8,7 +8,7 @@
   4. ExternalName
 - We are going to look in to ClusterIP and NodePort in this section with a detailed example. 
 - LoadBalancer Type is primarily for cloud providers and it will differ cloud to cloud, so we will do it accordingly (per cloud basis)
-- ExternalName doesn't have Imperative commands and we need to write YAML definition for the same, so we will look in to in our Declarative section or as and when required in our course. 
+- ExternalName doesn't have Imperative commands and we need to write YAML definition for the same, so we will look in to it as and when it is required in our course. 
 
 ## Step-02: ClusterIP Service - Backend Application Setup
 - Create a deployment for Backend Application (Spring Boot REST Application)
@@ -54,6 +54,21 @@ kubectl scale --replicas=10 deployment/my-backend-rest-app
 http://<node1-public-ip>:<Node-Port>/hello
 ```
 - **Frontend Nginx Reverse Proxy Application Source** [kube-frontend-nginx](../00-Docker-Images/03-kube-frontend-nginx/V1-Release)
+
+```conf
+server {
+    listen       80;
+    server_name  localhost;
+
+    location / {
+    proxy_pass http://my-backend-service:8080;
+    }
+
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /usr/share/nginx/html;
+    }
+```
 
 ## Pending Topics
 - We will look in tho these items when we progress in to course on that respective cloud provider
