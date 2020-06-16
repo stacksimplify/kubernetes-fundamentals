@@ -34,6 +34,7 @@ Observation: We don't need to specify "--type=ClusterIp" because default setting
 - Create a NodePort service for load balancing frontend application. 
 - **Important Note:** In Nginx reverse proxy, ensure backend service name `my-backend-service` is updated when you are building the frontend container. We already built it and put ready for this demo (stacksimplify/kube-frontend-nginx:1.0.0)
 - **Docker Image Location:** https://hub.docker.com/repository/docker/stacksimplify/kube-frontend-nginx
+- **Frontend Nginx Reverse Proxy Application Source** [kube-frontend-nginx](../00-Docker-Images/03-kube-frontend-nginx)
 ```
 # Create Deployment for Backend Rest App
 kubectl create deployment my-frontend-nginx-app --image=stacksimplify/kube-frontend-nginx:1.0.0 
@@ -54,8 +55,7 @@ kubectl scale --replicas=10 deployment/my-backend-rest-app
 # Test again to view the backend service Load Balancing
 http://<node1-public-ip>:<Node-Port>/hello
 ```
-- **Frontend Nginx Reverse Proxy Application Source** [kube-frontend-nginx](../00-Docker-Images/03-kube-frontend-nginx/V1-Release)
-
+- **Nginx Conf File**
 ```conf
 server {
     listen       80;
