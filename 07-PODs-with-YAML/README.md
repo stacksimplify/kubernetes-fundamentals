@@ -15,14 +15,14 @@ spec:
 - We are going to create a very basic pod definition
 - **02-pod-definition.yml**
 ```yml
-apiVersion: v1
-kind: Pod
-metadata:
+apiVersion: v1 # String
+kind: Pod  # String
+metadata: # Dictionary
   name: myapp-pod
-  labels:
-    app: myapp
+  labels: # Dictionary 
+    app: myapp         
 spec:
-  containers:
+  containers: # List
     - name: myapp
       image: stacksimplify/kubenginx:1.0.0
       ports:
@@ -45,15 +45,18 @@ kubectl get pods
 apiVersion: v1
 kind: Service
 metadata:
-  name: myapp-pod-nodeport-service
+  name: myapp-pod-nodeport-service  # Name of the Service
 spec:
   type: NodePort
   selector:
+  # Loadbalance traffic across Pods matching this label selector
     app: myapp
-  ports:
-    - port: 80
-      targetPort: 80
-      nodePort: 31231
+  # Accept traffic sent to port 80    
+  ports: 
+    - name: http
+      port: 80    # Service Port
+      targetPort: 80 # Container Port
+      nodePort: 31231 # NodePort
 ```
 - **Create NodePort Service for Pod**
 ```
