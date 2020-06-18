@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myapp2-rs
+spec:
+  replicas: 3 # 3 Pods should exist at all times.
+  selector:  # Pods label should be defined in ReplicaSet label selector
+    matchLabels:
+      app: myapp2
+  template:
+    metadata:
+      name: myapp2-pod
+      labels:
+        app: myapp2 # Atleast 1 Pod label should match with ReplicaSet Label Selector
+    spec:
+      containers:
+      - name: myapp2
+        image: stacksimplify/kubenginx:2.0.0
+        ports:
+          - containerPort: 80
