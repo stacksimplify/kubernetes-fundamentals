@@ -1,6 +1,17 @@
 # PODs with YAML
+## Step-01: Kubernetes YAML Top level Objects
+- Discuss about the k8s YAML top level objects
+- **01-kube-base-definition.yml**
+```yml
+apiVersion:
+kind:
+metadata:
+  
+spec:
+```
+-  **API Objects Reference:**  https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#pod-v1-core
 
-## Step-01: Create Simple Pod Definition using YAML 
+## Step-02: Create Simple Pod Definition using YAML 
 - We are going to create a very basic pod definition
 - **02-pod-definition.yml**
 ```yml
@@ -28,7 +39,7 @@ kubectl apply -f 02-pod-definition.yml
 kubectl get pods
 ```
 
-## Step-02: Create a NodePort Service
+## Step-03: Create a NodePort Service
 - **03-pod-nodeport-service.yml**
 ```yml
 apiVersion: v1
