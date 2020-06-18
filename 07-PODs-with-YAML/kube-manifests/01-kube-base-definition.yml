@@ -1,7 +1,7 @@
-apiVersion:
-kind:
+apiVersion: 
+kind: 
 metadata:
-  
+
 spec:
     
 # Types of Kubernetes Objects
