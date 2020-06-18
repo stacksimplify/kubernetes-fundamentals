@@ -1,25 +1,15 @@
 # PODs with YAML
 
-## Step-01: Create Pod
-- We are going to create a very basic pod definition.
-#### Imperative Style
-```
-kubectl create -f pod-definition.yml
-kubectl get pods
-```
-#### Declarative Style
-```
-kubectl apply -f pod-definition.yml
-kubectl get pods
-```
-- **pod-definition.yml**
+## Step-01: Create Simple Pod Definition using YAML 
+- We are going to create a very basic pod definition
+- **02-pod-definition.yml**
 ```yml
 apiVersion: v1
 kind: Pod
 metadata:
   name: myapp-pod
   labels:
-    name: myapp
+    app: myapp
 spec:
   containers:
   - name: myapp
@@ -27,38 +17,26 @@ spec:
     ports:
       - containerPort: 80
 ```
-
-## Step-02: Change Image Version
-- Change image version from 1.0.0 to 2.0.0
-### Imperative Style
-```
-kubectl replace -f pod-definition.yml
-kubectl get pods
-```
-### Declarative Style
+- **Create Pod**
 ```
 kubectl apply -f pod-definition.yml
-```
-- Verify pods
-```
 kubectl get pods
-kubectl describe pod <pod-name>
-kubectl describe pod myapp-pod
 ```
-- **Observation:** Only container inside pod gets killed and restarts with new container image.
 
-- **pod-definition.yml**
+## Step-02: Create a NodePort Service
+- **03-pod-nodeport-service.yml**
 ```yml
 apiVersion: v1
-kind: Pod
+kind: Service
 metadata:
-  name: myapp-pod
-  labels:
-    name: myapp
+  name: myapp-pod-nodeport-service
 spec:
-  containers:
-  - name: myapp
-    image: stacksimplify/kubenginx:2.0.0
-    ports:
-      - containerPort: 80
+  type: NodePort
+  selector:
+    app: myapp
+  ports:
+  - port: 80
+    targetPort: 80
+    nodePort: 31231
 ```
+
