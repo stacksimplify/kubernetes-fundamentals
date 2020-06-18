@@ -11,7 +11,7 @@
 - **Important Notes:** 
   - Name of Cluster IP service should be `name: my-backend-service` because  same is configured in frontend nginx reverse proxy `default.conf`. 
   - Test with different name and understand the issue we face
-  - We have also discussed about in our section [05-Services-with-kubectl](05-Services-with-kubectl/README.md)
+  - We have also discussed about in our section [05-Services-with-kubectl](/05-Services-with-kubectl/README.md)
 ```
 cd <Course-Repo>\kubernetes-fundamentals\10-Services-with-YAML\kube-manifests
 kubectl get all
