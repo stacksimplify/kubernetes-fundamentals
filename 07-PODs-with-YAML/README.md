@@ -12,10 +12,10 @@ metadata:
     app: myapp
 spec:
   containers:
-  - name: myapp
-    image: stacksimplify/kubenginx:1.0.0
-    ports:
-      - containerPort: 80
+    - name: myapp
+      image: stacksimplify/kubenginx:1.0.0
+      ports:
+        - containerPort: 80
 ```
 - **Create Pod**
 ```
@@ -35,8 +35,8 @@ spec:
   selector:
     app: myapp
   ports:
-  - port: 80
-    targetPort: 80
-    nodePort: 31231
+    - port: 80
+      targetPort: 80
+      nodePort: 31231
 ```
 

@@ -6,7 +6,7 @@ metadata:
     app: myapp
 spec:
   containers:
-  - name: myapp
-    image: stacksimplify/kubenginx:1.0.0
-    ports:
-      - containerPort: 80
+    - name: myapp
+      image: stacksimplify/kubenginx:1.0.0
+      ports:
+        - containerPort: 80
