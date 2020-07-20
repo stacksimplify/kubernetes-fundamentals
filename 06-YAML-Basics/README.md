@@ -1,25 +1,26 @@
 # YAML Basics
 
-## Step-01: 
-### Key Value Pairs
+## Step-01: YAML Fundamentals
+### Key Value Pairs & Comments
   - Space after colon is mandatory to differentiate key and value
 ```yml
 Name: Kalyan
 City: New Jersey
 ```
+
 ### Array / Lists
   - Dash indicates an element of an array
 ```yml
 Employees:
-- Kalyan
-- John
-- David
+  - Kalyan
+  - John
+  - David
 
 Departments:
-- HR
-- Training
-- Development
-- Infrastructure
+  - HR
+  - Training
+  - Development
+  - Infrastructure
 ```  
 ### Dictionary / Map
   - Set of properties grouped together after an item
@@ -32,30 +33,28 @@ Employee:
   department: HR
 ```  
 
-### Spaces in YAML
+## Step-02: YAML for Kubernetes Manifests
+- Comments start with `#` in YAML
+- Discuss Parent, Child and Spaces
+
+```yml
+apiVersion: v1 # String
+kind: Pod  # String
+metadata: # Dictionary
+  name: myapp-pod
+  labels: # Dictionary 
+    app: myapp         
+spec:
+  containers: # List
+    - name: myapp
+      image: stacksimplify/kubenginx:1.0.0
+      ports:
+        - containerPort: 80
+          protocol: "TCP"
+        - containerPort: 81
+          protocol: "TCP"
+```
 
 
 
-### Key Value / Dictionary / Lists
 
-
-### Dictionary with in another Dictionary
-
-
-### Dictionary vs List vs List of Dictionaries
-
-
-### Dictionary is Unordered, List is Ordered
-
-### Comments lines start with HASH
-
-
-# Kubernetes Editors - Visual Studio Code
-
-## Step-01: Kubernetes
-- https://marketplace.visualstudio.com/items?itemName=ms-kubernetes-tools.vscode-kubernetes-tools
-
-- https://code.visualstudio.com/docs/azure/kubernetes
-
-## Step-02: Docker
-- https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker
