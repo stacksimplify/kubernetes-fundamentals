@@ -1,8 +1,8 @@
 # Kubernetes Fundamentals
 
 ## Two FREE Courses on Udemy
-- Kubernetes for Absolute Beginners on AWS Cloud | Part-1
-- Kubernetes for Absolute Beginners on AWS Cloud | Part-2
+- [Kubernetes for Absolute Beginners on AWS Cloud | Part-1](https://www.udemy.com/course/kubernetes-for-absolute-beginners-on-aws-cloud-part-1)
+- [Kubernetes for Absolute Beginners on AWS Cloud | Part-2](https://www.udemy.com/course/kubernetes-for-absolute-beginners-on-aws-cloud-part-2)
 
 ## Contents
 
@@ -112,6 +112,7 @@
 - You will learn Kubernetes Fundamentals in both imperative and declarative approaches
 - You will learn to create AWS EKS Cluster using eksctl CLI
 - You will master many kubectl commands over the process
+- You will have step by step instructions documented using github repository
 
 ## Are there any course requirements or prerequisites?
 - You must have an AWS account to follow with me for hands-on activities.
