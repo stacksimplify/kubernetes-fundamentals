@@ -1,5 +1,7 @@
 # Kubernetes Fundamentals
 
+[![Image](https://stacksimplify.com/course-images/AWS-EKS-Kubernetes-Masterclass-DevOps-Microservices-course.png "AWS EKS Kubernetes - Masterclass")](https://www.udemy.com/course/aws-eks-kubernetes-masterclass-devops-microservices/?referralCode=257C9AD5B5AF8D12D1E1)
+
 ## Two FREE Courses on Udemy
 - [Kubernetes for Absolute Beginners on AWS Cloud | Part-1](https://www.udemy.com/course/kubernetes-for-absolute-beginners-on-aws-cloud-part-1)
 - [Kubernetes for Absolute Beginners on AWS Cloud | Part-2](https://www.udemy.com/course/kubernetes-for-absolute-beginners-on-aws-cloud-part-2)
