@@ -91,7 +91,7 @@ http://<node1-public-ip>:<Node-Port>/hello
 
 ## Step-04: Test Replicaset Reliability or High Availability 
 - Test how the high availability or reliability concept is achieved automatically in Kubernetes
-- Whenever a POD is accidentally terminated due to some application issue, ReplicaSet should auto-create that Pod to maintain desired number of Replicas configured to achive High Availability.
+- Whenever a POD is accidentally terminated due to some application issue, ReplicaSet should auto-create that Pod to maintain desired number of Replicas configured to achieve High Availability.
 ```
 # To get Pod Name
 kubectl get pods
