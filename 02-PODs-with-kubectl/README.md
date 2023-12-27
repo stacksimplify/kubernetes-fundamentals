@@ -161,8 +161,8 @@ kubectl logs -f my-first-pod
 - **Connect to a Container in POD and execute commands**
 ```
 # Connect to Nginx Container in a POD
-kubectl exec -it <pod-name> -- /bin/bash
-kubectl exec -it my-first-pod -- /bin/bash
+kubectl exec <pod-name> -- /bin/bash
+kubectl exec my-first-pod -- /bin/bash
 
 # Execute some commands in Nginx container
 ls
@@ -173,12 +173,12 @@ exit
 
 - **Running individual commands in a Container**
 ```
-kubectl exec -it <pod-name> env
+kubectl exec <pod-name> env
 
 # Sample Commands
-kubectl exec -it my-first-pod env
-kubectl exec -it my-first-pod ls
-kubectl exec -it my-first-pod cat /usr/share/nginx/html/index.html
+kubectl exec my-first-pod env
+kubectl exec my-first-pod ls
+kubectl exec my-first-pod cat /usr/share/nginx/html/index.html
 ```
 ## Step-06: Get YAML Output of Pod & Service
 ### Get YAML Output
