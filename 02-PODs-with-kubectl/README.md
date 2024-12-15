@@ -179,6 +179,12 @@ kubectl exec -it <pod-name> env
 kubectl exec -it my-first-pod env
 kubectl exec -it my-first-pod ls
 kubectl exec -it my-first-pod cat /usr/share/nginx/html/index.html
+
+# Newer version of Kubernetes use pod -- <COMMAND>
+kubectl exec -it my-first-pod -- env
+kubectl exec -it my-first-pod -- ls
+kubectl exec -it my-first-pod -- cat /usr/share/nginx/html/index.html
+
 ```
 ## Step-06: Get YAML Output of Pod & Service
 ### Get YAML Output
