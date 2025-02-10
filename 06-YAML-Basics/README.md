@@ -51,7 +51,7 @@ person: # Dictionary
 ```  
 
 
-## Step-05: Sample Pod Tempalte for Reference
+## Step-05: Sample Pod Template for Reference
 ```yml
 apiVersion: v1 # String
 kind: Pod  # String
