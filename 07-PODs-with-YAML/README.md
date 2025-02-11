@@ -9,7 +9,7 @@ metadata:
   
 spec:
 ```
--  **Pod API Objects Reference:**  https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#pod-v1-core
+-  **Pod API Objects Reference:**  https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.26/#pod-v1-core
 
 ## Step-02: Create Simple Pod Definition using YAML 
 - We are going to create a very basic pod definition
@@ -75,11 +75,11 @@ http://<WorkerNode-Public-IP>:31231
 ```
 
 ## API Object References
--  **Pod**: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#pod-v1-core
-- **Service**: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#service-v1-core
+-  **Pod**: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.26/#pod-v1-core
+- **Service**: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.26/#service-v1-core
 
 ## Updated API Object References
--  **Pod**: https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/
--  **Service**: https://kubernetes.io/docs/reference/kubernetes-api/service-resources/service-v1/
-- **Kubernetes API Reference:** https://kubernetes.io/docs/reference/kubernetes-api/
+-  **Pod**: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.26/#pod-v1-core
+- **Service**: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.26/#service-v1-core
+- **Kubernetes API Reference:** https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.26/#-strong-api-overview-strong-
 
